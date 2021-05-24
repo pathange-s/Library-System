@@ -4,16 +4,20 @@ const app = express();
 const mysql = require('mysql');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const expressSession = require('express-session');
 app.set('view-engine', 'ejs')
 app.use(express.urlencoded({extended:false}));
+app.use(session({secret: 'sssssshhhhh'}));
 
+var sess;
 const con = mysql.createConnection({
     host:'localhost',
     user:'root',
     password:'1234RTyu$',
     database:'USERS'
 });
+
+const databaseUsers = require('./database.js');
+
 
 con.connect((err) => {
     if(err){
@@ -25,19 +29,29 @@ con.connect((err) => {
 
 
 app.get('/', (req,res)=>{
-    res.render('index.ejs',{user:'Sai'});
+    req.session.destroy();
+    res.render('index.ejs');
 })
 
 
 
 app.get('/library', (req,res)=>{
-    res.render('library.ejs');
+    sess = req.session;
+    if(sess.email) {
+        res.render('library.ejs');
+    }
+    else { res.redirect('/login'); }
+    
 })
 
 app.get('/admin', (req,res)=>{
-    res.render('admin.ejs');
+    sess = req.session;
+    if(sess.email) {
+        res.render('admin.ejs');   
+    }
+    else{ res.redirect('/login'); } 
+    
 })
-
 
 app.get('/login',(req,res)=>{
    res.render('login.ejs')
@@ -57,24 +71,23 @@ app.post('/login', async (req,res)=>{
 
         if(result.length>0){
 
-        Object.keys(result).forEach(function(key) {
-
-            
+        Object.keys(result).forEach(function(key) { 
             
             var row = result[key];
-            
+
             if(bcrypt.compareSync(password, row.Password)){
                 
-                // if((row.Name==="Admin")){
-                    
-                //     res.redirect('/admin');
-                // }
-                // else{
-                    console.log("Hlllow");
+                if((row.Email=="admin@gmail.com")){
+                    console.log("admin");
+                    sess = req.session;
+                    sess.email = req.body.email;
+                    res.redirect('/admin');
+                }
+                else{
+                    sess = req.session;
+                    sess.email = req.body.email;
                     res.redirect('/library');
-                //}
-                //console.log("Correct PW");
-                // NOW LOGIN INTO HIS RESPECTIVE PAGE
+                }
             }
             else{
                 
@@ -125,4 +138,11 @@ app.post('/register',async(req,res)=>{
     }
 })
 
+
+
 app.listen(3000);
+
+
+
+
+//back button log outs . ! how to stop this
