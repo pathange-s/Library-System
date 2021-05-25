@@ -68,12 +68,63 @@ app.get('/admin', (req,res)=>{
         
     }
     else{ 
-    res.redirect('/login');
+        console.log(sess);
+        res.redirect('/login');
      
     } 
     
 })
 
+
+app.post('/addbooks',(req,res)=>{
+    
+        const book_id = req.body.book_id;
+        const book_name = req.body.book_name;
+        const book_count = req.body.book_count;
+        
+
+
+        console.log(book_id+book_name+book_count);
+
+        var sql_init =  "SELECT * FROM Books WHERE book_id='"+book_id+"'";
+
+        con.query(sql_init, function (err, result,fields) {     
+            if (err) throw err;  
+            if(result.length>0)  {
+                console.log("book already pressent || INC COUNT");
+               
+                Object.keys(result).forEach(function(key) { 
+                    var row = result[key];
+                    var prevCount = row.book_count;
+                    var newCount = parseInt(prevCount) + parseInt(book_count);
+                    // console.log(newCount);
+                    var updateQuery = "UPDATE Books SET book_count = '"+newCount+"' WHERE book_id = "+book_id+"";
+                    con.query(updateQuery,function(err,result){
+                        if (err) throw err;  
+                        console.log("Book Count Updated");  
+                        
+                    });
+
+
+                  });
+                
+                
+            }
+            else{
+
+                var sql = "INSERT INTO Books (book_id,book_name,book_count) VALUES ('"+book_id+"', '"+book_name+"', '"+book_count+"')";  
+
+                con.query(sql, function (err, result) {     
+                if (err) throw err;  
+                console.log("Book DATA INSERTED");  
+                }); 
+
+            }
+
+            res.redirect('/admin');
+        });  
+   
+});
 
 
 
@@ -169,5 +220,9 @@ app.listen(3000);
 
 
 
+
+
+
+
 //back button log outs . ! how to stop this
-//admin can add new books
+
