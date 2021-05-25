@@ -16,7 +16,7 @@ const con = mysql.createConnection({
     database:'USERS'
 });
 
-const databaseUsers = require('./database.js');
+
 
 
 con.connect((err) => {
@@ -34,24 +34,48 @@ app.get('/', (req,res)=>{
 })
 
 
+// app.get('/books', function(request, response){
+//     console.log('GET request received at /') 
+//     con.query("SELECT * FROM Books", function (err, result) {
+//         if (err) throw err; 
+//         else{
+//             response.send(result);
+//         }
+
+//     });
+// });
+
+
+
+
 
 app.get('/library', (req,res)=>{
     sess = req.session;
+
     if(sess.email) {
+        
         res.render('library.ejs');
     }
     else { res.redirect('/login'); }
     
 })
 
+
 app.get('/admin', (req,res)=>{
     sess = req.session;
     if(sess.email) {
         res.render('admin.ejs');   
+        
     }
-    else{ res.redirect('/login'); } 
+    else{ 
+    res.redirect('/login');
+     
+    } 
     
 })
+
+
+
 
 app.get('/login',(req,res)=>{
    res.render('login.ejs')
@@ -146,3 +170,4 @@ app.listen(3000);
 
 
 //back button log outs . ! how to stop this
+//admin can add new books

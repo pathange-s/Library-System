@@ -9,22 +9,31 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-    <script src="../app.js"></script>
+    
 
 </head>
 <body>
 
     <h1>Welcome to Library</h1>
-    <button onclick= "redirect()" type="button" class="btn btn-default btn-sm">
+    <button onclick= "logoutUser()" type="button" class="btn btn-default btn-sm">
         <span class="glyphicon glyphicon-log-out"></span> Log out
   </button>
+
+
+<form action="/books" method="GET">
+    <br>
+    <table border="1" cellpadding="7" cellspacing="7">
+     
+    <button type="submit">Check Library</button>
+</form>
+
 
 </body>
 
 <script type="text/javascript">
-    function redirect()
+    function logoutUser()
     {    
-        localStorage.removeItem("sess");
+        
         //console.log("redirect");
         window.location = "/";
     }
