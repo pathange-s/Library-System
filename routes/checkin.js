@@ -49,8 +49,6 @@ checkinRouter.post('/checkin',(req,res,next)=>{
         con.query(updateQuery, function (err, result) {     
         if (err) throw err;  
 
-
-
         });         
         
     }

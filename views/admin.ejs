@@ -1,3 +1,8 @@
+<head>
+    <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
 <h1>Welcome Admin</h1>
 
 
@@ -7,9 +12,34 @@
 
 
 
+<table id="table" >  
+    <thead>  
+        <tr>  
+            <th>Book ID</th>  
+            <th>Book Name</th>  
+            <th>Book Count</th>  
+            <th>+</th>
+            <th>-</th>
+        </tr>  
+    </thead>  
+
+     <tbody>  
+     <% print.forEach(function (book) { %>
+        <tr>  
+            <td><%=book.book_id %></td>  
+            <td type = "text" id = "<%=book.book_name %>"><%=book.book_name %></td>
+            <td><%=book.book_count %></td>
+            <td><button onclick="incBookCount('<%=book.book_id %>','<%=book.book_count %>')" type ="submit" id= "<%=book.book_id %>">+</button></td>
+            <td><button onclick="decBookCount('<%=book.book_id %>','<%=book.book_count %>')" type ="submit" id= "<%=book.book_id %>">-</button></td>
+        </tr>                       
+     <% }) %>
+     </tbody>
+     
+</table>   
+    
 
 <form action="/addbooks" method="POST">
-
+<br>
     <div>
         <label for="book_id">Book ID</label>
         <br>
@@ -31,3 +61,39 @@
 </form>
 
 
+
+<script>
+    function incBookCount(clicked,count){
+        // console.log(clicked);
+        // console.log(count);
+
+        $.ajax({
+            type: "POST",
+            url: "/increase",
+            data : {book_id : clicked, book_count : count},
+            success: function(msg){
+        }
+        }); 
+        location.reload();
+        location.reload();
+        //window.location="/admin";
+    }
+    function decBookCount(clicked,count){
+        console.log(clicked);
+        console.log(count);
+        console.log("decreasing");
+
+        $.ajax({
+            type: "POST",
+            url: "/decrease",
+            data : {book_id : clicked,book_count:count},
+            success: function(msg){
+            
+        }
+        }); 
+        location.reload();
+        location.reload();
+        //window.location="/admin";
+    }
+
+</script>

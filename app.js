@@ -22,7 +22,12 @@ var managebooksRouter = require('./routes/managebooks');
 var managedataRouter = require('./routes/managedata');
 var managedata0Router = require('./routes/managedata0');
 var userhistoryRouter = require('./routes/userhistory');
+var adminRouter = require('./routes/admin');
+var increaseRouter = require('./routes/increase');
+var decreaseRouter = require('./routes/decrease');
 
+
+app.get('/admin',adminRouter);
 app.post('/checkin',checkinRouter);
 app.post('/checkout',checkoutRouter);
 app.post('/managedata',managedataRouter);
@@ -31,13 +36,14 @@ app.get('/managebooks',managebooksRouter);
 app.get('/books',booksRouter);
 app.get('/approvedbooks',approvedbooksRouter);  
 app.get('/userhistory',userhistoryRouter);
+app.post('/increase',increaseRouter);
+app.post('/decrease',decreaseRouter);
 
 
 app.get('/', (req,res)=>{
     req.session.destroy();
     res.render('index.ejs');
 })
-
 
 
 
@@ -58,19 +64,6 @@ app.get('/userLandPage', (req,res)=>{
 
 
 
-app.get('/admin', (req,res)=>{
-    sess = req.session;
-    if(sess.email=='admin@gmail.com') {
-        res.render('admin.ejs');   
-        
-    }
-    else{ 
-        console.log(sess);
-        res.redirect('/login');
-     
-    } 
-    
-})
 
 
 app.post('/addbooks',(req,res)=>{
