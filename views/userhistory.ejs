@@ -1,0 +1,31 @@
+<h1>HISTORY || QUERIES</h1>
+
+<head>
+    <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<table id="table" >  
+    <thead>  
+        <tr>
+            <th>Request ID</th>  
+            <th>Book ID</th>  
+            <th>Book Name</th>  
+            <th>Status</th>
+        </tr>  
+    </thead>  
+
+     <tbody>  
+     <% print.forEach(function (book) { %>
+        <tr>  
+            <td type = "text" id = "<%=book.Book_ID %>"><%=book.Request_ID %></td>
+            <td><%=book.Book_ID %></td>  
+            <td><%=book.book_name %></td>  
+            <td><%=book.Status %></td>  
+            
+        </tr>                       
+     <% }) %>
+     </tbody>
+     
+</table>   
+

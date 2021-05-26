@@ -17,16 +17,19 @@ var con = require('./database');
 var booksRouter = require('./routes/books');
 var checkoutRouter = require('./routes/checkout');
 var approvedbooksRouter = require('./routes/approvedbooks');
+var managebooksRouter = require('./routes/managebooks');
+var managedataRouter = require('./routes/managedata');
+var managedata0Router = require('./routes/managedata0');
+var userhistoryRouter = require('./routes/userhistory');
 
 
 app.post('/checkout',checkoutRouter);
-
-
-
-
+app.post('/managedata',managedataRouter);
+app.post('/managedata0',managedata0Router);
+app.get('/managebooks',managebooksRouter);
 app.get('/books',booksRouter);
 app.get('/approvedbooks',approvedbooksRouter);
-
+app.get('/userhistory',userhistoryRouter);
 
 
 app.get('/', (req,res)=>{

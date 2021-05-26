@@ -13,7 +13,7 @@ checkoutRouter.post('/checkout',(req,res,next)=>{
     
     //=========================================================updating Book_Status
     for (var i = 0; i < books_id.length; i++){
-        console.log(books_id[i]+"+++++++++++++++++++");
+       // console.log(books_id[i]+"+++++++++++++++++++");
         var localID = books_id[i];
                 // //================================= decrement count of boooks in librarby by 1        
                 var sql_init =  "SELECT * FROM Books WHERE book_id='"+books_id[i]+"'";
@@ -30,7 +30,7 @@ checkoutRouter.post('/checkout',(req,res,next)=>{
                             
                              con.query(updateQuery,function(err,result){
                                  if (err) throw err;  
-                                 console.log("Book Count After Checkout Updated");  
+                                 //console.log("Book Count After Checkout Updated");  
         
                              });
         
@@ -51,7 +51,11 @@ checkoutRouter.post('/checkout',(req,res,next)=>{
 
 
         });         
+        
     }
+    
+
+    res.redirect('/books');
     console.log("Book Status(es) Updated");  
     
 });
