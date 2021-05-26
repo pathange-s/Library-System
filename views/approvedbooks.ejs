@@ -1,29 +1,25 @@
+<h1>Your Books</h1>
+
 <head>
     <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-
-<h3>Books Available @ Library</h3>
-
-
 <table id="table" >  
     <thead>  
-        <tr>  
+        <tr>
             <th>Book ID</th>  
             <th>Book Name</th>  
-            <th>Book Count</th>  
-            <th>Checkout</th>
+            <th>CheckIn</th>
         </tr>  
     </thead>  
 
      <tbody>  
      <% print.forEach(function (book) { %>
         <tr>  
-            <td><%=book.book_id %></td>  
-            <td type = "text" id = "<%=book.book_name %>"><%=book.book_name %></td>
-            <td><%=book.book_count %></td>
-            <td><input type="checkbox" id="<%=book.book_id %>" name="tickOrNot"></td>
+            <td type = "text" id = "<%=book.Book_ID %>"><%=book.Book_ID %></td>
+            <td><%=book.book_name %></td>  
+            <td><input type="checkbox" id="<%=book.Book_ID %>" name="tickOrNot"></td>
         </tr>                       
      <% }) %>
      </tbody>
@@ -31,11 +27,11 @@
 </table>   
 
 <br>
-<button onclick="collectChecks()">Checkout</button>
+<button onclick="collectChecks()">CheckIn</button>
 
 
 
-<script>
+<!-- <script>
 
 
     function collectChecks(){
@@ -72,4 +68,4 @@
 
 }
 
-</script>
+</script> -->

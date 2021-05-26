@@ -16,7 +16,7 @@ var sess;
 var con = require('./database');
 var booksRouter = require('./routes/books');
 var checkoutRouter = require('./routes/checkout');
-
+var approvedbooksRouter = require('./routes/approvedbooks');
 
 
 app.post('/checkout',checkoutRouter);
@@ -25,6 +25,7 @@ app.post('/checkout',checkoutRouter);
 
 
 app.get('/books',booksRouter);
+app.get('/approvedbooks',approvedbooksRouter);
 
 
 
@@ -76,7 +77,7 @@ app.post('/addbooks',(req,res)=>{
         
 
 
-        console.log(book_id+book_name+book_count);
+        //console.log(book_id+book_name+book_count);
 
         var sql_init =  "SELECT * FROM Books WHERE book_id='"+book_id+"'";
 
