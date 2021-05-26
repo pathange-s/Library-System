@@ -10,7 +10,7 @@ decreaseRouter.post('/decrease', function(req, res, next) {
         newcount = parseInt(req.body.book_count)-1;
     }
     //console.log(localID);
-    //console.log(newcount);
+    console.log(newcount);
 
     var updateQuery = "UPDATE Books SET book_count= "+newcount+" WHERE book_id = "+localID+"";
     con.query(updateQuery, function (err, result) {     
@@ -18,7 +18,7 @@ decreaseRouter.post('/decrease', function(req, res, next) {
     });  
     
     console.log("DECREMENTED");
-    //res.redirect('/admin');
+    res.redirect('/admin');
 
 });
 

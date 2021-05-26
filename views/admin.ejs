@@ -72,10 +72,13 @@
             url: "/increase",
             data : {book_id : clicked, book_count : count},
             success: function(msg){
+                window.location="/admin";
+                console.log("success");
         }
         }); 
-        location.reload();
-        location.reload();
+
+      
+        
         //window.location="/admin";
     }
     function decBookCount(clicked,count){
@@ -88,11 +91,13 @@
             url: "/decrease",
             data : {book_id : clicked,book_count:count},
             success: function(msg){
-            
+                window.location="/admin";
+                console.log("success");
         }
         }); 
-        location.reload();
-        location.reload();
+
+        
+        //location.reload();
         //window.location="/admin";
     }
 
