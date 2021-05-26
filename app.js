@@ -60,7 +60,7 @@ app.get('/userLandPage', (req,res)=>{
 
 app.get('/admin', (req,res)=>{
     sess = req.session;
-    if(sess.email) {
+    if(sess.email=='admin@gmail.com') {
         res.render('admin.ejs');   
         
     }

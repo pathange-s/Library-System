@@ -11,7 +11,9 @@
     <thead>  
         <tr>
             <th>Request ID</th>    
-            <th>Book ID</th>  
+            <th>Book ID</th> 
+            <th>Book Name</th> 
+            <th>Book Count</th> 
             <th>User_Email</th>  
             <th>Status</th>  
             <th>-</th>
@@ -23,6 +25,8 @@
         <tr>
             <td><%=book.Request_ID %></td>   
             <td><%=book.Book_ID %></td>  
+            <td><%=book.book_name %></td>  
+            <td><%=book.book_count   %></td>  
             <td><%=book.User_Email %></td>  
             <!-- <td type = "text" id = "<%=book.Book_ID %>"><%=book.book_name %></td> -->
             <td><%=book.Status %></td>
@@ -40,9 +44,16 @@
 <br>
 <button onclick="Approve()">Approve</button>
 <button onclick="Deny()">Deny</button>
+<button onclick="returnback()">Back</button>
+  
+
 
 <script>
 
+    function returnback(){
+
+        window.location = "/admin"
+    }
 
     function Approve(){
         console.log("Manage data of BOOKS SENT");

@@ -14,6 +14,7 @@ approvedbooksRouter.get('/approvedbooks', function(req, res, next) {
 
     con.query(sql, function (err, data, fields) {
         if (err) throw err;
+        
             var obj = {};
 
             obj = {print: data};
