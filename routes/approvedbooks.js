@@ -10,7 +10,7 @@ approvedbooksRouter.get('/approvedbooks', function(req, res, next) {
    sess = req.session;
    var stringEmail = sess.email;
    console.log(stringEmail);
-    var sql="SELECT * FROM Books_Status INNER JOIN Books USING(book_id) WHERE User_Email ='"+stringEmail+"' AND Status='Approved' ORDER BY Book_ID ASC";
+    var sql="SELECT * FROM Books_Status INNER JOIN Books USING(book_id) WHERE User_Email ='"+stringEmail+"' AND Status='Approved' ORDER BY Request_ID ASC";
 
     con.query(sql, function (err, data, fields) {
         if (err) throw err;

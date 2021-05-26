@@ -1,13 +1,12 @@
-<h1>Your Books</h1>
-
 <head>
     <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-
+<h1>Your Books</h1>
 <table id="table" >  
     <thead>  
         <tr>
+            <th>Request ID</th>
             <th>Book ID</th>  
             <th>Book Name</th>  
             <th>CheckIn</th>
@@ -17,9 +16,10 @@
      <tbody>  
      <% print.forEach(function (book) { %>
         <tr>  
+            <td><%=book.Request_ID %></td>
             <td type = "text" id = "<%=book.Book_ID %>"><%=book.Book_ID %></td>
             <td><%=book.book_name %></td>  
-            <td><input type="checkbox" id="<%=book.Book_ID %>" name="tickOrNot"></td>
+            <td><input type="checkbox" id="<%=book.Request_ID %>" name="tickOrNot"></td>
         </tr>                       
      <% }) %>
      </tbody>
@@ -27,31 +27,31 @@
 </table>   
 
 <br>
-<button onclick="collectChecks()">CheckIn</button>
+<button onclick="checkin()">CheckIn</button>
 
 
 
-<!-- <script>
+<script>
 
 
-    function collectChecks(){
+    function checkin(){
 
-        var books_id_checked = [];
+        var request_id_checked_checkin = [];
         
         var checkbox = document.querySelectorAll('input[type=checkbox]:checked');
         
         //console.log(checkbox.length+"--------------");
         for (var i = 0; i < checkbox.length; i++) {
 
-            books_id_checked.push(checkbox[i].id);
+            request_id_checked_checkin.push(checkbox[i].id);
         }
 
-        console.log(books_id_checked);
+        console.log(request_id_checked_checkin);
         
         $.ajax({
             type: "POST",
-            url: "/checkout",
-            data : {book : JSON.stringify(books_id_checked)},
+            url: "/checkin",
+            data : {book : JSON.stringify(request_id_checked_checkin)},
             success: function(msg){
             
         }
@@ -59,13 +59,13 @@
 
     
 
-    console.log("DATA SENT");
+    console.log("CHECK IN DATA SENT");
 
-    window.location = "/books";
+    location.reload();
 
 
     
 
 }
 
-</script> -->
+</script> 
