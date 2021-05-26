@@ -1,31 +1,31 @@
-const express = require('express');
+const express = require('express'),bodyParser = require('body-parser');
 const session = require('express-session');
 const app = express();
 const mysql = require('mysql');
 const router = express.Router();
 const bcrypt = require('bcrypt');
+const { response } = require('express');
 app.set('view-engine', 'ejs')
 app.use(express.urlencoded({extended:false}));
 app.use(session({secret: 'sssssshhhhh'}));
-
+app.use(express.json());
+//sess to store sessions locally
 var sess;
-const con = mysql.createConnection({
-    host:'localhost',
-    user:'root',
-    password:'1234RTyu$',
-    database:'USERS'
-});
+var sessEmail;
+
+var con = require('./database');
+var booksRouter = require('./routes/books');
+var checkoutRouter = require('./routes/checkout');
+
+
+
+app.post('/checkout',checkoutRouter);
 
 
 
 
-con.connect((err) => {
-    if(err){
-      console.log('Error connecting to Db');
-      return;
-    }
-    console.log('Connection established');
-  });
+app.get('/books',booksRouter);
+
 
 
 app.get('/', (req,res)=>{
@@ -34,31 +34,23 @@ app.get('/', (req,res)=>{
 })
 
 
-// app.get('/books', function(request, response){
-//     console.log('GET request received at /') 
-//     con.query("SELECT * FROM Books", function (err, result) {
-//         if (err) throw err; 
-//         else{
-//             response.send(result);
-//         }
-
-//     });
-// });
 
 
 
-
-
-app.get('/library', (req,res)=>{
+app.get('/userLandPage', (req,res)=>{
     sess = req.session;
 
     if(sess.email) {
-        
-        res.render('library.ejs');
+        sessEmail = sess.email;
+        console.log("Session email is set to "+ sess.email);
+        console.log(sessEmail);
+        res.render('userLandPage.ejs');
     }
     else { res.redirect('/login'); }
     
 })
+
+
 
 
 app.get('/admin', (req,res)=>{
@@ -161,7 +153,7 @@ app.post('/login', async (req,res)=>{
                 else{
                     sess = req.session;
                     sess.email = req.body.email;
-                    res.redirect('/library');
+                    res.redirect('/userLandPage');
                 }
             }
             else{
@@ -217,6 +209,12 @@ app.post('/register',async(req,res)=>{
 
 app.listen(3000);
 
+
+module.exports.getEmail = function(){
+        
+        
+        return sessEmail;
+};
 
 
 
