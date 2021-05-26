@@ -11,7 +11,7 @@ app.use(session({secret: 'sssssshhhhh'}));
 app.use(express.json());
 //sess to store sessions locally
 var sess;
-var sessEmail;
+
 
 var con = require('./database');
 var booksRouter = require('./routes/books');
@@ -41,9 +41,9 @@ app.get('/userLandPage', (req,res)=>{
     sess = req.session;
 
     if(sess.email) {
-        sessEmail = sess.email;
-        console.log("Session email is set to "+ sess.email);
-        console.log(sessEmail);
+        // sessEmail = sess.email;
+        // console.log("Session email is set to "+ sess.email);
+        // console.log(sessEmail);
         res.render('userLandPage.ejs');
     }
     else { res.redirect('/login'); }
@@ -211,9 +211,7 @@ app.listen(3000);
 
 
 module.exports.getEmail = function(){
-        
-        
-        return sessEmail;
+    // return sessEmail;
 };
 
 
