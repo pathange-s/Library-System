@@ -189,7 +189,7 @@ app.post('/register',async(req,res)=>{
     try {
         const hashedPassword =await bcrypt.hash(req.body.password,10);  
         const password = hashedPassword;
-
+        
         // const password = req.body.password;
 
         const name = req.body.name;
