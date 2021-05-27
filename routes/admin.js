@@ -35,20 +35,5 @@ adminRouter.get('/admin', function(req, res, next) {
 });
 
 
-
-//app.get('/admin', (req,res)=>{
-//     sess = req.session;
-//     if(sess.email=='admin@gmail.com') {
-//         res.render('admin.ejs');   
-        
-//     }
-//     else{ 
-//         console.log(sess);
-//         res.redirect('/login');
-     
-//     } 
-    
-// });
-
 module.exports = adminRouter;
 

@@ -59,7 +59,7 @@
             url: "/checkin",
             data : {book : JSON.stringify(request_id_checked_checkin)},
             success: function(msg){
-            
+                window.location="/approvedbooks";
         }
     }); 
 
@@ -67,8 +67,7 @@
 
     console.log("CHECK IN DATA SENT");
 
-    location.reload();
-
+    
 
     
 

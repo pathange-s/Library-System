@@ -73,13 +73,12 @@
             url: "/managedata",
             data : {request : JSON.stringify(request_id_checked)},
             success: function(msg){
-            
+            window.location="/managebooks";
         }
     }); 
 
     
-    window.location = "/managebooks";
-    location.reload();
+
     
 
     }
@@ -105,14 +104,12 @@
             url: "/managedata0",
             data : {request : JSON.stringify(request_id_checked)},
             success: function(msg){
-            
+                window.location="/managebooks";
         }
         }); 
 
 
-        window.location = "/managebooks";
-        location.reload();
-
+       
 
 
         }

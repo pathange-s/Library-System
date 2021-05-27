@@ -76,9 +76,10 @@ app.post('/addbooks',(req,res)=>{
 
         //console.log(book_id+book_name+book_count);
 
-        var sql_init =  "SELECT * FROM Books WHERE book_name='"+book_name+"'";
+        // var sql_init =  "SELECT * FROM Books WHERE book_name='"+book_name+"'";
+        //to prevent sql injection
 
-        con.query(sql_init, function (err, result,fields) {     
+        con.query('SELECT * FROM Books WHERE book_name=?',[book_name], function (err, result,fields) {     
             if (err) throw err;  
             if(result.length>0)  {
                 console.log("book already pressent || INC COUNT");
@@ -92,8 +93,9 @@ app.post('/addbooks',(req,res)=>{
                         newCount = 0;
                     }
                     // console.log(newCount);
-                    var updateQuery = "UPDATE Books SET book_count = '"+newCount+"' WHERE book_name = '"+book_name+"'";
-                    con.query(updateQuery,function(err,result){
+                    //var updateQuery = "UPDATE Books SET book_count = '"+con.escape(newCount)+"' WHERE book_name = '"+book_name+"'";
+                    var updateQuery = "";
+                    con.query('UPDATE Books SET book_count = ? WHERE book_name = ?',[newCount,book_name],function(err,result){
                         if (err) throw err;  
                         console.log("Book Count Updated");  
                         
@@ -106,9 +108,10 @@ app.post('/addbooks',(req,res)=>{
             }
             else{
 
-                var sql = "INSERT INTO Books (book_name,book_count) VALUES ('"+book_name+"', '"+book_count+"')";  
+                //var sql = "INSERT INTO Books (book_name,book_count) VALUES ('"+book_name+"', '"+book_count+"')";  
+                
 
-                con.query(sql, function (err, result) {     
+                con.query('INSERT INTO Books (book_name,book_count) VALUES (?, ?)',[book_name,book_count], function (err, result) {     
                 if (err) throw err;  
                 console.log("Book DATA INSERTED");  
                 }); 
