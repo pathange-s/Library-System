@@ -15,3 +15,5 @@ Then start the server by
 ```bash
 nodemon app.js
 ```
+
+Set Up Database, And you are good to go :)
