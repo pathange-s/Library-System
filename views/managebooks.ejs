@@ -4,10 +4,108 @@
 </head>
 
 
-<h1>Manage Portal : Approve || Deny Requests</h1>
+<style>
+    #books {
+    font-family: 'Ubuntu', sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    
+    }
+#books tr:nth-child(even){background-color: #f2f2f2;}
+#books tr:hover {background-color: #ddd;}
+#books th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: chocolate;
+  color: white;
+}
+.sign {
+        padding-top: 10px;
+        color: #8C55AA;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bold;
+        font-size: 26px;
+    }
+.submitbutton {
+        cursor: pointer;
+        border-radius: 5em;
+        color: #fff;
+        background: linear-gradient(to right, #9C27B0, #E040FB);
+        border: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+
+        margin: 10px;
+        
+        
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 13px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    }
+    .incdec {
+        cursor: pointer;
+        border-radius: 5em;
+        color: #fff;
+        background: linear-gradient(to right, rgb(255, 182, 130),rgb(199, 78, 65));
+        border: 0;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    }
+    #manage{
+        margin-top: -5px;
+        margin-left: 43%;
+        
+
+    }
+
+    .submitbutton { transition: all .2s ease-in-out; }
+    .submitbutton:hover { transform: scale(1.1); }
+
+    input[type=text] {
+    width: 200px;
+    padding: 5px 10px;
+    margin: 4px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    }
+
+    input[type=text]:focus {
+    border: 3px solid #555;
+    }
+
+    input[type=number] {
+    
+    width: 200px;
+    padding: 5px 10px;
+    margin: 4px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    }
+
+    input[type=number]:focus {
+    border: 3px solid #555;
+    }
+    #divs{
+        margin-left: 43%;
+    }
+    #logout{
+        margin-top: -30px;
+    }
+
+</style>
+
+<p class="sign" align="center">Manage Portal : Approve || Deny Requests</p>
 
 
-<table id="table" >  
+<table id="books" >  
     <thead>  
         <tr>
             <th>Request ID</th>    
@@ -42,9 +140,9 @@
 
 
 <br>
-<button onclick="Approve()">Approve</button>
-<button onclick="Deny()">Deny</button>
-<button onclick="returnback()">Back</button>
+<button class="submitbutton" onclick="Approve()">Approve</button>
+<button  class="submitbutton" onclick="Deny()">Deny</button>
+<button class="submitbutton"  onclick="returnback()">Back</button>
   
 
 

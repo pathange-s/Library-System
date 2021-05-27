@@ -3,11 +3,59 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
+<style>
+    #books {
+    font-family: 'Ubuntu', sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    
+    }
+#books tr:nth-child(even){background-color: #f2f2f2;}
+#books tr:hover {background-color: #ddd;}
+#books th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: chocolate;
+  color: white;
+}
+.sign {
+        padding-top: 10px;
+        color: #8C55AA;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bold;
+        font-size: 26px;
+    }
+.submitbutton {
+      cursor: pointer;
+        border-radius: 5em;
+        color: #fff;
+        background: linear-gradient(to right, #9C27B0, #E040FB);
+        border: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        margin: 10px;
+        margin-left:20% ;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 13px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    }
+    #checkout{
+        margin-left: 300px;
+    }
+    .submitbutton { transition: all .2s ease-in-out; }
+    .submitbutton:hover { transform: scale(1.1); }
 
-<h3>Books Available @ Library</h3>
+
+</style>
 
 
-<table id="table" >  
+<p class="sign" align="center">Books Available In Library</p>
+
+
+<table id="books" >  
     <thead>  
         <tr>  
             <th>Book ID</th>  
@@ -20,10 +68,10 @@
      <tbody>  
      <% print.forEach(function (book) { %>
         <tr>  
-            <td><%=book.book_id %></td>  
-            <td type = "text" id = "<%=book.book_name %>"><%=book.book_name %></td>
-            <td><%=book.book_count %></td>
-            <td><input type="checkbox" id="<%=book.book_id %>" name="tickOrNot"></td>
+            <td class="data"><%=book.book_id %></td>  
+            <td class="data" type = "text" id = "<%=book.book_name %>"><%=book.book_name %></td>
+            <td class="data" ><%=book.book_count %></td>
+            <td class="data" ><input type="checkbox" id="<%=book.book_id %>" name="tickOrNot"></td>
         </tr>                       
      <% }) %>
      </tbody>
@@ -31,8 +79,8 @@
 </table>   
 
 <br>
-<button onclick="collectChecks()">Checkout</button>
-<button onclick="returnback()">Back</button>
+<button onclick="collectChecks()" id="checkout" class="submitbutton">Checkout</button>
+<button onclick="returnback()"class="submitbutton">Back</button>
 
 
 

@@ -1,11 +1,67 @@
-<h1>HISTORY || QUERIES</h1>
+
+
+
 
 <head>
     <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<table id="table" >  
+
+
+
+<style>
+    #books {
+    font-family: 'Ubuntu', sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    
+    }
+#books tr:nth-child(even){background-color: #f2f2f2;}
+#books tr:hover {background-color: #ddd;}
+#books th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: chocolate;
+  color: white;
+}
+.sign {
+        padding-top: 10px;
+        color: #8C55AA;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bold;
+        font-size: 26px;
+    }
+.submitbutton {
+      cursor: pointer;
+        border-radius: 5em;
+        color: #fff;
+        background: linear-gradient(to right, #9C27B0, #E040FB);
+        border: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        margin: 30px;
+        margin-left:45% ;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 13px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    }
+    #checkout{
+        margin-left: 300px;
+    }
+    .submitbutton { transition: all .2s ease-in-out; }
+    .submitbutton:hover { transform: scale(1.1); }
+
+
+</style>
+
+
+<p class="sign" align="center">History</p>
+
+<table id="books" >  
     <thead>  
         <tr>
             <th>Request ID</th>  
@@ -29,7 +85,8 @@
      
 </table>   
 
-<button onclick="returnback()">Back</button>
+
+<button onclick="returnback()" class="submitbutton" >Back</button>
 
 <script>
     function returnback(){

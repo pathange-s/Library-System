@@ -96,7 +96,7 @@
     border: 2px solid rgba(0, 0, 0, 0.02);
     margin-bottom: 50px;
     margin-left: 46px;
-    text-align: center;
+    text-align: left;
     margin-bottom: 27px;
     font-family: 'Ubuntu', sans-serif;
     }
@@ -123,6 +123,19 @@
         box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
     }
     
+    .sign {
+        padding-top: 40px;
+        margin-bottom: -2vh;
+        color: #8C55AA;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bold;
+        font-size: 26px;
+    }
+
+    .submitbutton { transition: all .2s ease-in-out; }
+    .submitbutton:hover { transform: scale(1.1); }
+
+
     .login {
         text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.672);
         color: #E1BEE7;
@@ -156,7 +169,7 @@
         <div>
           <input class="un"id="name" name = "name"  type="text" align="center" for ="name" placeholder="Username" required>
           <input class="un"id="email" name = "email"  type="email" align="center" for="email" placeholder="Email ID" required>
-          <input class="pass"id="password" name = "password"  type="password" align="center" for="password" placeholder="Password" required>
+          <input class="un"id="password" name = "password"  type="password" align="center" for="password" placeholder="Password" required>
 
           
           <button id ="Register" class="submitbutton" type="submit" align="center">Register</button>
