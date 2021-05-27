@@ -68,7 +68,7 @@ app.get('/userLandPage', (req,res)=>{
 
 app.post('/addbooks',(req,res)=>{
     
-        const book_id = req.body.book_id;
+        //const book_id = req.body.book_id;
         const book_name = req.body.book_name;
         const book_count = req.body.book_count;
         
@@ -76,7 +76,7 @@ app.post('/addbooks',(req,res)=>{
 
         //console.log(book_id+book_name+book_count);
 
-        var sql_init =  "SELECT * FROM Books WHERE book_id='"+book_id+"'";
+        var sql_init =  "SELECT * FROM Books WHERE book_name='"+book_name+"'";
 
         con.query(sql_init, function (err, result,fields) {     
             if (err) throw err;  
@@ -86,9 +86,13 @@ app.post('/addbooks',(req,res)=>{
                 Object.keys(result).forEach(function(key) { 
                     var row = result[key];
                     var prevCount = row.book_count;
+                    
                     var newCount = parseInt(prevCount) + parseInt(book_count);
+                    if(newCount<0){
+                        newCount = 0;
+                    }
                     // console.log(newCount);
-                    var updateQuery = "UPDATE Books SET book_count = '"+newCount+"' WHERE book_id = "+book_id+"";
+                    var updateQuery = "UPDATE Books SET book_count = '"+newCount+"' WHERE book_name = '"+book_name+"'";
                     con.query(updateQuery,function(err,result){
                         if (err) throw err;  
                         console.log("Book Count Updated");  
@@ -102,7 +106,7 @@ app.post('/addbooks',(req,res)=>{
             }
             else{
 
-                var sql = "INSERT INTO Books (book_id,book_name,book_count) VALUES ('"+book_id+"', '"+book_name+"', '"+book_count+"')";  
+                var sql = "INSERT INTO Books (book_name,book_count) VALUES ('"+book_name+"', '"+book_count+"')";  
 
                 con.query(sql, function (err, result) {     
                 if (err) throw err;  

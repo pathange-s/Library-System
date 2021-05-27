@@ -64,6 +64,7 @@
             url: "/checkout",
             data : {book : JSON.stringify(books_id_checked)},
             success: function(msg){
+            window.location="/userLandPage";
             
         }
         }); 
@@ -72,7 +73,7 @@
 
     console.log("DATA SENT");
 
-    window.location = "/books";
+    // window.location = "/books";
 
  
  
