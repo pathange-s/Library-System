@@ -143,7 +143,14 @@
         color: #E1BEE7;
         text-decoration: none
     }
-    
+    #Registerpopup{
+
+    color: rgba(0, 169, 0, 0.898);
+    font-size: 15px;
+    margin: -30px;
+    visibility: hidden;
+
+    }
     @media (max-width: 600px) {
         .main {
             border-radius: 0px;
@@ -152,23 +159,24 @@
     }</style>
 
 
-
     </head>
     
     <body>
       <div class="main">
         <p class="sign" align="center">Register</p>
-        
+        <p class="sign" id = "Registerpopup" align="center">Registeration Successful</p>
         
         
     <form class="form1" action="/register" method="POST">
+      
         <div>
           <input class="un"id="name" name = "name"  type="text" align="center" for ="name" placeholder="Username" required>
           <input class="un"id="email" name = "email"  type="email" align="center" for="email" placeholder="Email ID" required>
           <input class="un"id="password" name = "password"  type="password" align="center" for="password" placeholder="Password" required>
 
           
-          <button id ="Register" class="submitbutton" type="submit" align="center">Register</button>
+          <!-- <button id ="Register" class="submitbutton" type="submit" align="center" >Register</button> -->
+          <button id ="Register" class="submitbutton" align="center" onclick="regpopup()">Register</button>
           <p class="login" align="center"><a href="/login">Login</p>
               
         </div>
