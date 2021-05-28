@@ -16,7 +16,6 @@
 #books th {
   padding-top: 12px;
   padding-bottom: 12px;
-  
   background-color: chocolate;
   color: white;
 }
@@ -102,7 +101,7 @@
 
 </style>
 
-<p class="sign" align="center">Manage Portal : Approve || Deny Requests</p>
+<p class="sign" align="center">Books Checked Out From Library</p>
 
 
 <table id="books" >  
@@ -113,24 +112,18 @@
             <th>Book Name</th> 
             <th>Book Count</th> 
             <th>User_Email</th>  
-            <th>Status</th>  
-            <th>-</th>
+            
         </tr>  
     </thead>  
 
      <tbody>  
      <% print.forEach(function (book) { %>
-        <tr align="center">
+        <tr align="center"> 
             <td><%=book.Request_ID %></td>   
             <td><%=book.Book_ID %></td>  
             <td><%=book.book_name %></td>  
             <td><%=book.book_count   %></td>  
             <td><%=book.User_Email %></td>  
-            <!-- <td type = "text" id = "<%=book.Book_ID %>"><%=book.book_name %></td> -->
-            <td><%=book.Status %></td>
-            <td><input type="checkbox" id="<%=book.Request_ID%>" name="tickOrNot"></td>
-            
-            
         </tr>                       
      <% }) %>
      </tbody>
@@ -140,8 +133,7 @@
 
 
 <br>
-<button class="submitbutton" onclick="Approve()">Approve</button>
-<button  class="submitbutton" onclick="Deny()">Deny</button>
+
 <button class="submitbutton"  onclick="returnback()">Back</button>
   
 
@@ -153,63 +145,5 @@
         window.location = "/admin"
     }
 
-    function Approve(){
-        console.log("Manage data of BOOKS SENT");
-        var request_id_checked = [];
-        var checkbox = document.querySelectorAll('input[type=checkbox]:checked');
-        
-        //console.log(checkbox.length+"--------------");
-        for (var i = 0; i < checkbox.length; i++) {
-
-            request_id_checked.push(checkbox[i].id);
-        }
-
-        console.log(request_id_checked);
-        
-        $.ajax({
-            type: "POST",
-            url: "/managedata",
-            data : {request : JSON.stringify(request_id_checked)},
-            success: function(msg){
-            window.location="/managebooks";
-        }
-    }); 
-
-    
-
-    
-
-    }
-
-
-
-    function Deny(){
-        console.log("Manage data of BOOKS SENT");
-        var request_id_checked = [];
-
-        var checkbox = document.querySelectorAll('input[type=checkbox]:checked');
-
-        //console.log(checkbox.length+"--------------");
-        for (var i = 0; i < checkbox.length; i++) {
-
-        request_id_checked.push(checkbox[i].id);
-    }
-
-        console.log(request_id_checked);
-
-        $.ajax({
-            type: "POST",
-            url: "/managedata0",
-            data : {request : JSON.stringify(request_id_checked)},
-            success: function(msg){
-                window.location="/managebooks";
-        }
-        }); 
-
-
-       
-
-
-        }
 
 </script>

@@ -125,8 +125,15 @@
         color: #E1BEE7;
         padding-top: 15px;
     }
-    
-    a {
+    #loginuser{
+
+    color: rgba(243, 57, 0, 0.72);
+    font-size: 15px;
+    margin: -30px;
+        
+
+    }
+        a {
         text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
         color: #E1BEE7;
         text-decoration: none
@@ -140,23 +147,20 @@
     }</style>
 
 
-
-    </head>
-    
     <body>
       <div class="main">
         <p class="sign" align="center">Login</p>
         
+        <p class="sign" id = "loginuser" align="center">User Already Exists </p>
         
-        
-    <form class="form1" action="/login" method="POST">
+    <form class="form1" action="/loginexists" method="POST">
         <div>
           
           <input class="un"id="email" name = "email"  type="email" align="center" for="email" placeholder="Email ID" required>
           <input class="pass"id="password" name = "password"  type="password" align="center" for="password" placeholder="Password" required>
-
+            
           
-          <button id ="login" class="submitbutton" type="submit" align="center">Login</button>
+          <button id ="login" class="submitbutton" type="submit" align="center" >Login</button>
           <p class="register" align="center"><a href="/register">Register</p>
               
         </div>

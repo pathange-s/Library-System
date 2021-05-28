@@ -22,7 +22,7 @@
 #books th {
   padding-top: 12px;
   padding-bottom: 12px;
-  text-align: left;
+  
   background-color: chocolate;
   color: white;
 }
@@ -63,7 +63,7 @@
 
 <table id="books" >  
     <thead>  
-        <tr>
+        <tr align="center">
             <th>Request ID</th>  
             <th>Book ID</th>  
             <th>Book Name</th>  
@@ -73,7 +73,7 @@
 
      <tbody>  
      <% print.forEach(function (book) { %>
-        <tr>  
+        <tr align="center">
             <td type = "text" id = "<%=book.Book_ID %>"><%=book.Request_ID %></td>
             <td><%=book.Book_ID %></td>  
             <td><%=book.book_name %></td>  
