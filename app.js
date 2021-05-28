@@ -261,7 +261,8 @@ app.post('/register',async(req,res)=>{
                 var sql = "INSERT INTO USERS_DATA (Name,Email,Password) VALUES ('"+name+"', '"+email+"', '"+password+"')";  
                 con.query(sql, function (err, result) {     
                 if (err) throw err;  
-                console.log("USER DATA INSERTED");  
+                console.log("USER DATA INSERTED"); 
+                
                 }); 
                 // console.log("Created User! Name: "+name+"Email:" +email+"Password: "+password);
                 res.redirect('/login');
