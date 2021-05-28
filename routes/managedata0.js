@@ -18,7 +18,7 @@ managedata0Router.post('/managedata0',(req,res)=>{
     for (var i = 0; i < Requests_ID_Array.length; i++){
         //console.log(Requests_ID_Array[i]);
         var localID = Requests_ID_Array[i];
-        var updateQuery = "UPDATE Books_Status SET Status = 'Denined' WHERE Request_ID = "+localID+"";
+        var updateQuery = "UPDATE Books_Status SET Status = 'Denied' WHERE Request_ID = "+localID+"";
         
         con.query(updateQuery,function(err,result){
             if (err) throw err;  
