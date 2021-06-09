@@ -166,7 +166,7 @@ app.post('/login', async (req,res)=>{
                     sess = req.session;
                     sess.email = req.body.email;
                     res.redirect('/userLandPage');
-                    next();
+                    
                 }
             }
             else{
