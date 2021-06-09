@@ -10,11 +10,6 @@ Clone this repo and run
 npm install
 ```
 
-Then start the server by 
-
-```bash
-nodemon app.js
-```
 
 [SET UP MYSQL(Windows users Look up) ](https://www.mysqltutorial.org/install-mysql-ubuntu/)
 
@@ -38,3 +33,11 @@ CREATE TABLE Books_Status (Request_ID INT AUTO_INCREMENT PRIMARY KEY,User_Email 
 
 
 Set Up Database, And you are good to go :)
+
+
+
+Then start the server by 
+
+```bash
+nodemon app.js
+```
